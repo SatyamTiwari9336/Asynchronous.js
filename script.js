@@ -38,5 +38,6 @@ const getcountry = function (country) {
 
 getcountry('bharat');
 getcountry('russia');
+ffg;
 getcountry('argentina');
 getcountry('sudan');
