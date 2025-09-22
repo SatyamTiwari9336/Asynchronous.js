@@ -41,7 +41,6 @@ getcountry('Bharat');
 getcountry('russia');
 getcountry('argentina');
 getcountry('sudan');
-*/
 
 const renderCountry = function (data, className = '') {
   const html = `<article class="country ${className}" >
@@ -83,4 +82,12 @@ const getcountryAndNeighbour = function (country) {
     });
   });
 };
-getcountryAndNeighbour('Bharat');
+getcountryAndNeighbour('russia');
+// getcountryAndNeighbour('usa');
+*/
+// const request = new XMLHttpRequest();
+// request.open('GET', `https://restcountries.com/v2/name/${country}`);
+// request.send();
+
+const request = fetch(' https://restcountries.com/v2/name/portugal');
+console.log(request);
