@@ -122,7 +122,7 @@ const getcountryData = function (country) {
 
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
-      if (!neighbour) return;
+      if (!neighbour) throw new Error('No Neighbour found');
 
       return getjson(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
