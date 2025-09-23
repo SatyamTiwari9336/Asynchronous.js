@@ -110,7 +110,7 @@ getcountryAndNeighbour('russia');
 
 const getJSON = function (url, errormsg = ' ') {
   return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`country not found ${response.status}`);
+    if (!response.ok) throw new Error(`${errormsg} , ${response.status}`);
 
     return response.json();
   });
@@ -141,6 +141,7 @@ const getcountryData = function (country) {
 btn.addEventListener('click', function () {
   getcountryData('portugal');
   getcountryData('bharat');
+  // getcountryData('anijafbub');
 });
 
 // getcountryData('jasnfijan'); 404 error not found page
