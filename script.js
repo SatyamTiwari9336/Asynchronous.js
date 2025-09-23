@@ -108,7 +108,7 @@ getcountryAndNeighbour('russia');
 //     });
 // };
 
-const getjson = function (url, errormsg = ' ') {
+const getJSON = function (url, errormsg = ' ') {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`country not found ${response.status}`);
 
@@ -116,7 +116,7 @@ const getjson = function (url, errormsg = ' ') {
   });
 };
 const getcountryData = function (country) {
-  getjson(`https://restcountries.com/v2/name/${country}`, 'Country not found')
+  getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found')
     .then(data => {
       console.log(data);
 
@@ -124,7 +124,7 @@ const getcountryData = function (country) {
       const neighbour = data[0].borders[0];
       if (!neighbour) throw new Error('No Neighbour found');
 
-      return getjson(`https://restcountries.com/v2/alpha/${neighbour}`);
+      return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => {
