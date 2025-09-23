@@ -124,9 +124,8 @@ const getcountryData = function (country) {
       const neighbour = data[0].borders[0];
       if (!neighbour) return;
 
-      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+      return getjson(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
-    .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => {
       console.error(` the error is caused ${err} 💥💥💥`);
