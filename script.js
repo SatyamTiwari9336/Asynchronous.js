@@ -158,14 +158,24 @@ const whereAmI = function (lat, lng) {
     `https://api-bdc.io/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
   )
     .then(response => {
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error(`Problem with geocoding ${response.status}`);
+      }
       return response.json();
     })
-    .then(data =>
-      console.log(`You are in ${data.city}  ,  ${data.countryName}`)
-    )
+    .then(data => {
+      console.log(`You are in ${data.city}  ,  ${data.countryName}`);
+      return fetch(`https://restcountries.com/v2/name/${data.countryName}`);
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
     .catch(err => console.error(` the error is ${err.message}`));
+
   console.log(data6);
 };
-whereAmI(32, 82);
+whereAmI(33, 63);
+whereAmI(51, 10);
+////////////////////////////////////////////
+//
