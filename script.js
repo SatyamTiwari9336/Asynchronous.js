@@ -93,7 +93,7 @@ const getcountryAndNeighbour = function (country) {
 getcountryAndNeighbour('russia');
 // getcountryAndNeighbour('usa');
 ///////////////////////////////////////////////
-//consuming promises with fetch
+//consuming promises with fetch and throwing custom error and cathcing error
 
 // const getcountryData = function (country) {
 //   fetch(`https://restcountries.com/v2/name/${country}`)
@@ -121,7 +121,7 @@ const getcountryData = function (country) {
 
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
-      if (!neighbour) throw new Error('No Neighbour found');
+      if (!neighbour) throw new Error('No Neighbour found'); //throw new error 
 
       return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
@@ -157,11 +157,15 @@ const whereAmI = function (lat, lng) {
   const data6 = fetch(
     `https://api-bdc.io/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
   )
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Problem with geocoding ${response.status}`);
+      return response.json();
+    })
     .then(data =>
       console.log(`You are in ${data.city}  ,  ${data.countryName}`)
     )
-    .catch(err => console.log(` the error is ${err}`));
+    .catch(err => console.error(` the error is ${err.message}`));
   console.log(data6);
 };
 whereAmI(32, 82);
