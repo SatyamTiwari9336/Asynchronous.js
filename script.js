@@ -107,9 +107,16 @@ getcountryAndNeighbour('russia');
 //       renderCountry(data[0]);
 //     });
 // };
+
+const getjson = function (url, errormsg = ' ') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`country not found ${response.status}`);
+
+    return response.json();
+  });
+};
 const getcountryData = function (country) {
-  fetch(`https://restcountries.com/v2/name/${country}`)
-    .then(response => response.json())
+  getjson(`https://restcountries.com/v2/name/${country}`, 'Country not found')
     .then(data => {
       console.log(data);
 
@@ -123,9 +130,18 @@ const getcountryData = function (country) {
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => {
       console.error(` the error is caused ${err} 💥💥💥`);
-      RenderError(`some thing wnt wrong ${err.message} Try Again ! 💥💥`);
+      RenderError(
+        `some thing went wrong -- ${err.message} -- Try Again ! 💥💥`
+      );
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
     });
 };
+
 btn.addEventListener('click', function () {
   getcountryData('portugal');
+  getcountryData('bharat');
 });
+
+// getcountryData('jasnfijan'); 404 error not found page
