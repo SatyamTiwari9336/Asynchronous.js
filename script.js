@@ -92,7 +92,6 @@ const getcountryAndNeighbour = function (country) {
 };
 getcountryAndNeighbour('russia');
 // getcountryAndNeighbour('usa');
-*/
 ///////////////////////////////////////////////
 //consuming promises with fetch
 
@@ -145,5 +144,21 @@ btn.addEventListener('click', function () {
 });
 
 // getcountryData('jasnfijan'); 404 error not found page
+*/
+
 /////////////////////////////////////////////////////////////////
 //Challenge - 1
+const whereAmI = function (lat, lng) {
+  const data5 = fetch(
+    'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}'
+  ).then(response => response.json());
+  console.log(data5);
+
+  const data6 = fetch(
+    `https://api-bdc.io/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
+  )
+    .then(response => response.json())
+    .then(data => console.log(`you are in ${data.city},${data.countryName}`));
+  console.log(data6);
+};
+whereAmI(23, 11);
