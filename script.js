@@ -239,7 +239,6 @@ wait(1)
 Promise.resolve('ABC').then(x => console.log(x));
 Promise.reject(new Error('Problem !')).catch(x => console.error(x));
 //////////////////////////////////////////
-*/
 //Promisifying Geolocation API
 
 const getPosition = function () {
@@ -287,3 +286,24 @@ const whereAmI = function (lat, lng) {
 };
 
 btn.addEventListener('click', whereAmI);
+*/
+///////////////////////////////////
+//challenge -2
+
+const imgcontainer = document.querySelector('.images');
+const createImage = function (imgUrl) {
+  return new Promise(function (reject, resolve) {
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.addEventListener('load', function () {
+      imgcontainer.append(img);
+      resolve(img);
+    });
+    img.addEventListener('error', function () {
+      reject(new Error('image not found'));
+    });
+  });
+};
+createImage('img/img-1.jpgsdf')
+  .then(img => console.log('image 1 is loaded'))
+  .catch(err => console.log(err));
