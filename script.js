@@ -196,7 +196,6 @@ console.log('test ends');
 // resolved promise 1
 // 0 Second Timer
 //as execution context , call stack runs first microtasks queue has priority above callback queue  , at last call back queue  operations .
-*/
 
 ///////////////////////////////////////
 //building a simple promise
@@ -219,7 +218,7 @@ const wait = function (seconds) {
   });
 };
 
-wait
+wait(1)
   .then(() => {
     console.log('i waited for 1 second');
     return wait(1);
@@ -231,4 +230,13 @@ wait
   .then(() => {
     console.log(' i waited for 3 seconds ');
     return wait(3);
+  })
+  .then(() => {
+    console.log(' i waited for 4 seconds ');
+    return wait(1);
   });
+
+Promise.resolve('ABC').then(x => console.log(x));
+Promise.reject(new Error('Problem !')).catch(x => console.error(x));
+//////////////////////////////////////////
+*/
