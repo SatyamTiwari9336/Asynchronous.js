@@ -144,7 +144,6 @@ btn.addEventListener('click', function () {
 });
 
 // getcountryData('jasnfijan'); 404 error not found page
-*/
 
 /////////////////////////////////////////////////////////////////
 //Challenge - 1
@@ -179,4 +178,6 @@ whereAmI(33, 63);
 whereAmI(26, 31);
 whereAmI(51, 10);
 ////////////////////////////////////////////
-//
+*/
+
+// Event Loop in practice
