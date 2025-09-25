@@ -178,7 +178,6 @@ whereAmI(33, 63);
 whereAmI(26, 31);
 whereAmI(51, 10);
 ////////////////////////////////////////////
-*/
 
 // Event Loop in practice
 console.log('test start');
@@ -186,10 +185,18 @@ setTimeout(() => {
   console.log('0 second timer');
 }, 0);
 Promise.resolve('Resolved promise 1').then(res => console.log(res));
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i <= 1000000000; i++) {}
+  console.log(res);
+});
 console.log('test ends');
 //output
 // timer start
 // timer end
 // resolved promise 1
 // 0 Second Timer
-//as execution context , call stack runs first microtasks queue has priority , at last call back queue  operations
+//as execution context , call stack runs first microtasks queue has priority above callback queue  , at last call back queue  operations .
+*/
+
+///////////////////////////////////////
+//building a simple promise
