@@ -176,6 +176,7 @@ const whereAmI = function (lat, lng) {
   console.log(data6);
 };
 whereAmI(33, 63);
+whereAmI(26, 31);
 whereAmI(51, 10);
 ////////////////////////////////////////////
 //
