@@ -238,7 +238,7 @@ wait(1)
 
 Promise.resolve('ABC').then(x => console.log(x));
 Promise.reject(new Error('Problem !')).catch(x => console.error(x));
-//////////////////////////////////////////
+////////////////////////////////////////////////////////
 //Promisifying Geolocation API
 
 const getPosition = function () {
@@ -287,7 +287,7 @@ const whereAmI = function (lat, lng) {
 
 btn.addEventListener('click', whereAmI);
 */
-/////////////////////////////////
+////////////////////////////////////////////////////
 //challenge -2
 
 const imgcontainer = document.querySelector('.images');
