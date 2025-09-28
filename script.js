@@ -197,7 +197,7 @@ console.log('test ends');
 // 0 Second Timer
 //as execution context , call stack runs first microtasks queue has priority above callback queue  , at last call back queue  operations .
 
-///////////////////////////////////////
+/////////////////////////////////////
 //building a simple promise
 const quicklottery = new Promise((resolve, reject) => {
   console.log('lottery draw is happening ');
@@ -287,7 +287,7 @@ const whereAmI = function (lat, lng) {
 
 btn.addEventListener('click', whereAmI);
 */
-///////////////////////////////////
+/////////////////////////////////
 //challenge -2
 
 const imgcontainer = document.querySelector('.images');
