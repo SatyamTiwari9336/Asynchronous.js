@@ -307,3 +307,5 @@ const createImage = function (imgUrl) {
 createImage('img/img-1.jpg')
   .then(img => console.log('image 1 is loaded'))
   .catch(err => console.log(err));
+
+/////////////////////////////////
