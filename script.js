@@ -176,7 +176,7 @@ whereAmI(33, 63);
 whereAmI(26, 31);
 whereAmI(51, 10);
 ////////////////////////////////////////////
-
+*/
 // Event Loop in practice
 console.log('test start');
 setTimeout(() => {
@@ -189,12 +189,13 @@ Promise.resolve('Resolved promise 2').then(res => {
 });
 console.log('test ends');
 //output
-// timer start
-// timer end
+// test start
+// test end
 // resolved promise 1
+// resolved promise 2
 // 0 Second Timer
 //as execution context , call stack runs first microtasks queue has priority above callback queue  , at last call back queue  operations .
-
+/*
 /////////////////////////////////////
 //building a simple promise
 const quicklottery = new Promise((resolve, reject) => {
