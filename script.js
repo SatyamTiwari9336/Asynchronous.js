@@ -285,7 +285,6 @@ const whereAmI = function (lat, lng) {
 btn.addEventListener('click', whereAmI);
 ////////////////////////////////////////////////////
 //challenge -2
-*/
 
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -335,5 +334,38 @@ createImage('img/img-1.jpg')
     currentImage.style.display = 'none';
   })
   .catch(err => console.log(err));
-
+*/
 ////////////////////////////////////////
+//async await is synttic sugr over the .then() method in js
+//Async await for consuming promises
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function (country) {
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+  //reverse Geo coding
+  const resGeo = await fetch(
+    `https://api-bdc.io/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  //country data
+  // fetch(`https://restcountries.com/v2/name/${country}`).then(res =>
+  //   console.log(res)
+  // );
+  const res = await fetch(
+    `https://restcountries.com/v2/name/${dataGeo.countryName}`
+  );
+  const data = await res.json();
+  console.log(data);
+
+  renderCountry(data[0]);
+};
+whereAmI();
+console.log('first');
