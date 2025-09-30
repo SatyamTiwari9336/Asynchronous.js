@@ -226,7 +226,7 @@ wait(1)
   })
   .then(() => {
     console.log(' i waited for 3 seconds ');
-    return wait(3);
+    return wait(1);
   })
   .then(() => {
     console.log(' i waited for 4 seconds ');
