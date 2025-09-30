@@ -336,7 +336,7 @@ createImage('img/img-1.jpg')
   .catch(err => console.log(err));
 */
 ////////////////////////////////////////
-//async await is synttic sugr over the .then() method in js
+//async await is syntatic sugar over the .then() method in js
 //Async await for consuming promises
 
 const getPosition = function () {
