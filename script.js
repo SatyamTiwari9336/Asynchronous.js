@@ -290,6 +290,11 @@ btn.addEventListener('click', whereAmI);
 ////////////////////////////////////////////////////
 //challenge -2
 
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
 const imgcontainer = document.querySelector('.images');
 const createImage = function (imgUrl) {
   return new Promise(function (reject, resolve) {
@@ -304,8 +309,25 @@ const createImage = function (imgUrl) {
     });
   });
 };
+let currentImage;
 createImage('img/img-1.jpg')
-  .then(img => console.log('image 1 is loaded'))
+  .then(img => {
+    currentImage = img;
+    console.log('image 1 is loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImage.style.display = 'none';
+    return createImage('img/img-2.jpg');
+  })
+  .then(img => {
+    currentImage = img;
+    console.log('image 2 is loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImage.style.display = 'none';
+  })
   .catch(err => console.log(err));
 
 /////////////////////////////////
