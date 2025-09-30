@@ -195,7 +195,7 @@ console.log('test ends');
 // 0 Second Timer
 //as execution context , call stack runs first microtasks queue has priority above callback queue  , at last call back queue  operations .
 /////////////////////////////////////
-//building a simple promise
+//building a simple Promise
 const quicklottery = new Promise((resolve, reject) => {
   console.log('lottery draw is happening ');
   setTimeout(function () {
