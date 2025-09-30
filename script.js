@@ -254,7 +254,7 @@ const whereAmI = function (lat, lng) {
     .then(pos => {
       const { latitutde: lat, longitude: lng } = pos.coords;
       return fetch(
-        'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}'
+        ` https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
       );
     })
     .then(response => response.json());
@@ -283,48 +283,48 @@ const whereAmI = function (lat, lng) {
 };
 
 btn.addEventListener('click', whereAmI);
-*/
 ////////////////////////////////////////////////////
 //challenge -2
 
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
-};
-const imgcontainer = document.querySelector('.images');
-const createImage = function (imgUrl) {
-  return new Promise(function (reject, resolve) {
-    const img = document.createElement('img');
-    img.src = imgUrl;
-    img.addEventListener('load', function () {
-      imgcontainer.append(img);
-      resolve(img);
-    });
-    img.addEventListener('error', function () {
-      reject(new Error('image not found'));
-    });
-  });
-};
-let currentImage;
-createImage('img/img-1.jpg')
-  .then(img => {
-    currentImage = img;
-    console.log('image 1 is loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-    return createImage('img/img-2.jpg');
-  })
-  .then(img => {
-    currentImage = img;
-    console.log('image 2 is loaded');
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-  })
-  .catch(err => console.log(err));
+//  const wait = function (seconds) {
+// return new Promise(function (resolve) {
+//   setTimeout(resolve, seconds * 1000);
+// });
+//  };
+// const imgcontainer = document.querySelector('.images');
+// const createImage = function (imgUrl) {
+//   return new Promise(function (reject, resolve) {
+//     const img = document.createElement('img');
+//     img.src = imgUrl;
+//     img.addEventListener('load', function () {
+//       imgcontainer.append(img);
+//       resolve(img);
+//     });
+//     img.addEventListener('error', function () {
+//       reject(new Error('image not found'));
+//     });
+//   });
+// };
+// let currentImage;
+// createImage('img/img-1.jpg')
+//   .then(img => {
+//     currentImage = img;
+//     console.log('image 1 is loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImage = img;
+//     console.log('image 2 is loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//   })
+//   .catch(err => console.log(err));
 
-/////////////////////////////////
+////////////////////////////////////////
+*/
