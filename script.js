@@ -94,7 +94,6 @@ getcountryAndNeighbour('russia');
 // getcountryAndNeighbour('usa');
 ///////////////////////////////////////////////
 //consuming promises with fetch and throwing custom error and cathcing error
-
 // const getcountryData = function (country) {
 //   fetch(`https://restcountries.com/v2/name/${country}`)
 //     .then(function (response) {
@@ -121,7 +120,7 @@ const getcountryData = function (country) {
 
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
-      if (!neighbour) throw new Error('No Neighbour found'); //throw new error 
+       if (!neighbour) throw new Error('No Neighbour found'); //throw new error
 
       return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
@@ -144,7 +143,6 @@ btn.addEventListener('click', function () {
 });
 
 // getcountryData('jasnfijan'); 404 error not found page
-
 /////////////////////////////////////////////////////////////////
 //Challenge - 1
 const whereAmI = function (lat, lng) {
