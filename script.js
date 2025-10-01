@@ -377,16 +377,27 @@ const whereAmI = async function (country) {
     throw err;
   }
 };
+
 console.log('1: will get location');
 // const city = whereAmI();
 // console.log(city);
-whereAmI()
-  .then(city => console.log(city))
-  .catch(err => console.error(`2: ${err.msg}`))
-  .finally(() => {
-    console.log('3 : Location got ');
-  });
 
+// whereAmI()
+//   .then(city => console.log(city))
+//   .catch(err => console.error(`2: ${err.msg}`))
+//   .finally(() => {
+//     console.log('3 : Location got ');
+//   });
+
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.msg}`);
+  }
+  console.log('3 : Location got ');
+})();
 ////////////////////////////////////////////////////////
 // try catch basic syntax
 // try {
