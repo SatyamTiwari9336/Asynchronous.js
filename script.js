@@ -25,6 +25,14 @@ const RenderError = function (msg) {
   countriesContainer.style.opacity = 1;
 };
 
+const getJSON = function (url, errormsg = ' ') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errormsg} , ${response.status}`);
+
+    return response.json();
+  });
+};
+
 // NEW COUNTRIES API URL (use instead of the URL shown in videos):
 // https://restcountries.com/v2/name/portugal
 
@@ -106,13 +114,7 @@ getcountryAndNeighbour('russia');
 //     });
 // };
 
-const getJSON = function (url, errormsg = ' ') {
-  return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errormsg} , ${response.status}`);
 
-    return response.json();
-  });
-};
 const getcountryData = function (country) {
   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found')
     .then(data => {
@@ -389,10 +391,11 @@ console.log('1: will get location');
 //     console.log('3 : Location got ');
 //   });
 
+//returning values from async function
 (async function () {
   try {
-    const city = await whereAmI();
-    console.log(`2: ${city}`);
+    const statement = await whereAmI();
+    console.log(`2: ${statement}`);
   } catch (err) {
     console.error(`2: ${err.msg}`);
   }
@@ -408,4 +411,23 @@ console.log('1: will get location');
 //   alert(err);
 // }
 /////////////////////////////////////////////
-//returning values from async function
+//Running promises in parallel
+// get three countries and return an array of their capitals
+const get3countries = async function (c1, c2, c3) {
+  try {
+    // const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`);
+    // const [data2] = await getJSON(`https://restcountries.com/v2/name/${c2}`);
+    // const [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`);
+    // console.log([data1.capital, data2.capital, data3.capital]);
+
+    const data = await Promise.all([
+      getJSON(`https://restcountries.com/v2/name/${c1}`),
+      getJSON(`https://restcountries.com/v2/name/${c2}`),
+      getJSON(`https://restcountries.com/v2/name/${c3}`),
+    ]);
+    console.log(data.map(data => data[0].capital));
+  } catch (err) {
+    console.error(err);
+  }
+};
+get3countries('portugal', 'Russia', 'bharat');
