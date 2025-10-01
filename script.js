@@ -336,7 +336,7 @@ createImage('img/img-1.jpg')
     currentImage.style.display = 'none';
   })
   .catch(err => console.log(err));
-*/
+
 ////////////////////////////////////////
 //async await is syntatic sugar over the .then() method in js
 //Async await for consuming promises
@@ -430,4 +430,30 @@ const get3countries = async function (c1, c2, c3) {
     console.error(err);
   }
 };
+
 get3countries('portugal', 'Russia', 'bharat');
+*/
+/////////////////////////////////////////////////////////////////
+//promise.race
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/mexico`),
+    getJSON(`https://restcountries.com/v2/name/italy`),
+    getJSON(`https://restcountries.com/v2/name/egypt`),
+  ]);
+  console.log(res[0]);
+})();
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('request took tooo long'));
+    }, sec * 1000);
+  });
+};
+Promise.race([
+  getJSON(`https://restcountries.com/v2/name/egypt`),
+  timeout(0.01),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
