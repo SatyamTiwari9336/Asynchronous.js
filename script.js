@@ -451,9 +451,28 @@ const timeout = function (sec) {
     }, sec * 1000);
   });
 };
-Promise.race([
-  getJSON(`https://restcountries.com/v2/name/egypt`),
-  timeout(0.01),
-])
+//⬇️ race is between timeout function and getJson whatever is resolved first it will run
+Promise.race([getJSON(`https://restcountries.com/v2/name/egypt`), timeout(0.1)])
   .then(res => console.log(res[0]))
   .catch(err => console.error(err));
+////////////////////////////////////////////////
+//promise.allSettled it returns array of  resulut of all the promises no matter if they are resolved or rejected
+Promise.allSettled([
+  Promise.resolve('resolved'),
+  Promise.reject('Error'),
+  Promise.resolve('all setlled'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+//Promise.any if any of the promise  is completed of all of them and ignores errors
+Promise.any([
+  Promise.resolve('resolved'),
+  Promise.reject('Error'),
+  Promise.resolve('all setlled'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+/////////////////////////////////////////////
+//challenge - 3
