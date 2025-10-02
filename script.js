@@ -527,4 +527,20 @@ const Loadnpause = async function () {
     console.log(err);
   }
 };
-Loadnpause();
+// Loadnpause();
+
+const loadAll = async function (imgarr) {
+  try {
+    const imgs = imgarr.map(async img => {
+      await createImage(img);
+      console.log(imgs);
+      const imgsel = await Promise.all(imgs);
+      console.log(imgsel);
+      imgsel.forEach(img => img.classList.add('parallel'));
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
